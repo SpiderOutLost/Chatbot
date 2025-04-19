@@ -1,0 +1,71 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_name
+  - ask_capabilities
+  - ask_time
+  - ask_date
+  - ask_weather
+  - calculate
+  - analyze_text
+  - echo
+  - help
+
+entities:
+  - location
+  - text
+  - number
+
+slots:
+  location:
+    type: text
+    mappings:
+    - type: from_text
+  text:
+    type: text
+    mappings:
+    - type: from_text
+  number:
+    type: float
+    mappings:
+    - type: from_text
+
+responses:
+  utter_greet:
+    - text: "Привет! Как я могу помочь?"
+
+  utter_goodbye:
+    - text: "До свидания! Буду рад помочь снова."
+
+  utter_ask_name:
+    - text: "Я бот-помощник!"
+
+  utter_ask_capabilities:
+    - text: "Я умею отвечать на вопросы, считать, анализировать текст и многое другое. Напишите /help для списка команд."
+
+  utter_help:
+    - text: |
+        Доступные команды:
+        - Приветствие (привет, здравствуй)
+        - Вопросы (как тебя зовут, что ты умеешь)
+        - Время и дата (сколько времени, какая сегодня дата)
+        - Погода (какая сейчас погода в [городе])
+        - Математика (сколько будет X + Y, посчитай X * Y)
+        - Анализ текста (определи язык, какая тональность)
+        - Коррекция текста (исправь ошибки в 'текст')
+        - Распознавание сущностей (кто в тексте 'текст')
+        - Эхо-режим (эхо ваш_текст)
+        - Для выхода: выход
+
+actions:
+  - action_get_time
+  - action_get_date
+  - action_calculate
+  - action_analyze_text
+  - action_echo
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

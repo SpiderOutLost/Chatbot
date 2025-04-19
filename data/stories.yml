@@ -1,0 +1,49 @@
+version: "3.1"
+
+stories:
+- story: greet and goodbye
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: ask capabilities
+  steps:
+  - intent: ask_capabilities
+  - action: utter_ask_capabilities
+
+- story: ask name
+  steps:
+  - intent: ask_name
+  - action: utter_ask_name
+
+- story: help
+  steps:
+  - intent: help
+  - action: utter_help
+
+- story: get time
+  steps:
+  - intent: ask_time
+  - action: action_get_time
+
+- story: get date
+  steps:
+  - intent: ask_date
+  - action: action_get_date
+
+- story: calculate
+  steps:
+  - intent: calculate
+  - action: action_calculate
+
+- story: analyze text
+  steps:
+  - intent: analyze_text
+  - action: action_analyze_text
+
+- story: echo
+  steps:
+  - intent: echo
+  - action: action_echo
