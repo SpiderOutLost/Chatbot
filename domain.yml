@@ -17,6 +17,7 @@ entities:
   - location
   - text
   - number
+  - city
 
 slots:
   location:
@@ -65,7 +66,7 @@ actions:
   - action_calculate
   - action_analyze_text
   - action_echo
-
+  - action_get_weather
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -15,3 +15,11 @@ rules:
   steps:
   - intent: help
   - action: utter_help
+- rule: Echo command processing
+  steps:
+  - intent: echo
+  - action: action_echo
+- rule: Weather temperature
+  steps:
+  - intent: ask_weather
+  - action: action_get_weather
