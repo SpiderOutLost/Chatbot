@@ -1,3 +1,4 @@
+
 version: "3.1"
 
 intents:
@@ -12,12 +13,15 @@ intents:
   - analyze_text
   - echo
   - help
+  - provide_user_info
 
 entities:
   - location
   - text
   - number
   - city
+  - name
+  - hobby
 
 slots:
   location:
@@ -32,20 +36,32 @@ slots:
     type: float
     mappings:
     - type: from_text
+  city:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: city
+  name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: name
+  hobby:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: hobby
 
 responses:
   utter_greet:
     - text: "Привет! Как я могу помочь?"
-
+    - text: "Привет, {name}! Рад тебя видеть снова!"  # Персонализированное приветствие
   utter_goodbye:
     - text: "До свидания! Буду рад помочь снова."
-
   utter_ask_name:
     - text: "Я бот-помощник!"
-
   utter_ask_capabilities:
     - text: "Я умею отвечать на вопросы, считать, анализировать текст и многое другое. Напишите /help для списка команд."
-
   utter_help:
     - text: |
         Доступные команды:
@@ -58,7 +74,10 @@ responses:
         - Коррекция текста (исправь ошибки в 'текст')
         - Распознавание сущностей (кто в тексте 'текст')
         - Эхо-режим (эхо ваш_текст)
+        - Указать данные (например, "Меня зовут Анна, я из Москвы, хобби - танцы")
         - Для выхода: выход
+  utter_ask_user_info:
+    - text: "Пожалуйста, укажи свое имя, город и хобби, например: 'Меня зовут Анна, я из Москвы, хобби - танцы'."
 
 actions:
   - action_get_time
@@ -67,6 +86,9 @@ actions:
   - action_analyze_text
   - action_echo
   - action_get_weather
+  - action_save_user_info
+  - action_greet_last_user
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

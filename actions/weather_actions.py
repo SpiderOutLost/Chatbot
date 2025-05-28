@@ -27,13 +27,13 @@ class ActionGetWeather(Action):
         return []
 
     def _extract_city(self, tracker) -> Text:
-        """Извлекаем город из entities или slots"""
+
         city = next(tracker.get_latest_entity_values("city"), None)
         return city or tracker.get_slot("city")
 
     def _get_weather_data(self, city: Text) -> float:
         """Основной метод получения данных о погоде"""
-        api_key = "ваш_api_ключ"  # Замените на реальный ключ!
+        api_key = "2f7c9ffcbe409f40bd0c18030f3c4746"  
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
         response = requests.get(url, timeout=5)
